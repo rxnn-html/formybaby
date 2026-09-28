@@ -1,0 +1,138 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+img, video { max-width: 100%; height: auto; }
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #f3e9f7;
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background: linear-gradient(160deg, #1a1220, #2b1631);
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  background: rgba(0, 0, 0, 0.35);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+nav a {
+  color: #f8e7ff;
+  text-decoration: none;
+  padding: 10px 18px;              /* big enough to tap */
+  border-radius: 20px;
+  transition: background 0.3s;
+}
+nav a:hover { background: rgba(248, 130, 190, 0.3); }
+nav a.active { background: #e0559a; color: #fff; }
+
+/* Content */
+.content { max-width: 900px; margin: 60px auto; padding: 0 20px; text-align: center; }
+.content h1, .story-page h1 {
+  font-size: clamp(1.7rem, 6vw, 2.4rem);   /* scales with the screen */
+  color: #ff8fc4;
+  margin-bottom: 20px;
+}
+
+/* Fade in on page load */
+.fade-in { animation: fadeIn 1.2s ease both; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Floating hearts and photos */
+.heart-bg { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+.heart { position: absolute; bottom: -40px; font-size: 28px; opacity: 0; animation: floatUp 9s linear infinite; }
+.heart::before { content: "💗"; }
+.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 30%; animation-delay: 2s; }
+.heart:nth-child(3) { left: 50%; animation-delay: 4s; }
+.heart:nth-child(4) { left: 70%; animation-delay: 1s; }
+.heart:nth-child(5) { left: 90%; animation-delay: 3s; }
+
+.float-photo {
+  position: absolute;
+  bottom: -120px;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 3px solid #fff;
+  opacity: 0;
+  animation: floatUp 12s linear infinite;
+}
+@keyframes floatUp {
+  0%   { transform: translateY(0); opacity: 0; }
+  20%  { opacity: 0.8; }
+  100% { transform: translateY(-110vh); opacity: 0; }
+}
+.content, section, footer, main { position: relative; z-index: 1; }
+
+/* Message letter */
+.letter {
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 30px;
+  text-align: left;
+  font-size: 1.1rem;
+}
+.letter p { margin-bottom: 16px; }
+
+/* Reasons timeline */
+.story-page { max-width: 700px; margin: 60px auto; padding: 0 20px; text-align: center; }
+.story-timeline { border-left: 3px solid #e0559a; margin: 40px 0 40px 20px; text-align: left; }
+.story-line {
+  position: relative;
+  padding: 14px 20px;
+  margin-bottom: 14px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 0 12px 12px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+.story-line.visible { opacity: 1; transform: none; }
+.story-line::before {
+  content: "";
+  position: absolute;
+  left: -11px; top: 50%;
+  width: 18px; height: 18px;
+  background: #ff8fc4;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+/* ---------- Tablets and phones ---------- */
+@media (max-width: 768px) {
+  body { background-attachment: scroll; }   /* fixed backgrounds jump on touch screens */
+}
+
+@media (max-width: 600px) {
+  nav { gap: 4px; padding: 10px; }
+  nav a { padding: 10px 14px; font-size: 0.95rem; }
+
+  .content { margin: 30px auto; }
+  .story-page { margin: 30px auto; }
+
+  .letter { padding: 20px; font-size: 1rem; }
+
+  .story-timeline { margin-left: 12px; }
+  .story-line { padding: 12px 14px; font-size: 0.95rem; }
+
+  .heart { font-size: 22px; }
+  .float-photo { width: 56px; height: 56px; }
+}
+
+/* Respect people who turn off animations */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in, .heart, .float-photo { animation: none; }
+  .story-line { transition: none; opacity: 1; transform: none; }
+}
