@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catch My Heart</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/game.css" />
+  <script defer src="js/script.js"></script>
+  <script defer src="js/game.js"></script>
+</head>
+<body class="fade-in">
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="message.html">Message</a>
+    <a href="reasons.html">Reasons</a>
+    <a href="game.html" class="active">Game</a>
+  </nav>
+
+  <audio id="bg-music" src="music/background-music.mp3" loop autoplay muted></audio>
+  <div id="music-hint">
+    <span class="music-hint-text">plz play this music b4 anyt</span>
+    <button id="music-toggle" aria-label="Toggle music">🔊</button>
+  </div>
+
+  <section class="content fade-in">
+    <h1>Catch My Heart 💗</h1>
+    <p class="game-sub">Catch the falling hearts. Golden ones are worth 5, but dodge the broken ones!</p>
+    <div class="game-hud">
+      <span>💗 Score <b id="score">0</b></span>
+      <span>⏱ <b id="time">30</b>s</span>
+      <span>🏆 Best <b id="best">0</b></span>
+    </div>
+    <div class="game-wrap">
+      <canvas id="game-canvas" aria-label="Heart catching game"></canvas>
+      <div id="game-overlay">
+        <h2 id="game-title">Ready, baby?</h2>
+        <p id="game-text">Move your mouse or drag your finger to move the basket. On a keyboard, use ← and →.</p>
+        <button id="game-start" class="game-btn">Start ♥</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>No copyrights · 2026</p>
+  </footer>
+</body>
+</html>
