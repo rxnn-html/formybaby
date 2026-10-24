@@ -14,8 +14,8 @@ if (lines.length) {
 
 // Floating photos among the hearts
 const photos = [
-  "mybaby1.png", "f2.png", "mybaby4.png", "f1.png", "mybaby5.png",
-  "f3.png", "mybaby2.png", "f4.png", "mybaby3.png"
+  "images/photos/photo-01.png", "images/photos/photo-08.png", "images/photos/photo-04.png", "images/photos/photo-07.png", "images/photos/photo-05.png",
+  "images/photos/photo-09.png", "images/photos/photo-02.png", "images/photos/photo-10.png", "images/photos/photo-03.png"
 ];
 
 const floatBg = document.querySelector(".heart-bg");
