@@ -62,3 +62,41 @@ if (music && toggleBtn) {
     toggleBtn.textContent = music.muted ? "🔇" : "🔊";
   });
 }
+
+// Reply form: emails her message to me through Web3Forms
+const replyForm = document.getElementById("reply-form");
+if (replyForm) {
+  const status = document.getElementById("reply-status");
+  const sendBtn = document.getElementById("reply-send");
+
+  if (replyForm.access_key.value === "YOUR_ACCESS_KEY_HERE") {
+    console.warn("Reply form: paste your Web3Forms access key into message.html first.");
+  }
+
+  replyForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    sendBtn.disabled = true;
+    sendBtn.textContent = "Sending...";
+    status.className = "";
+    status.textContent = "";
+
+    try {
+      const res = await fetch(replyForm.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(replyForm)
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.message || "Send failed");
+      replyForm.reset();
+      status.className = "ok";
+      status.textContent = "Sent! Your message is on its way to me ♥";
+    } catch (err) {
+      status.className = "error";
+      status.textContent = "Oops, it didn't send. Please try again in a bit :(";
+    }
+
+    sendBtn.disabled = false;
+    sendBtn.textContent = "Send ♥";
+  });
+}
