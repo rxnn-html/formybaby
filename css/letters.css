@@ -1,0 +1,22 @@
+/* Push When You're Sad */
+.push-sub { font-family: Georgia, serif; font-style: italic; color: #d9c3e3; margin-bottom: 22px; }
+.push-stage { position: relative; display: flex; justify-content: center; margin: 10px 0 14px; }
+.push-btn {
+  width: 170px; height: 170px; border-radius: 50%; border: 4px solid #fff; cursor: pointer; font-size: 4.5rem; line-height: 1;
+  background: linear-gradient(145deg, #ffa8d2, #e0559a); box-shadow: 0 0 30px rgba(255, 143, 196, 0.55);
+  animation: pushPulse 2s ease-in-out infinite; transition: transform 0.1s;
+}
+.push-btn:active { transform: scale(0.9); animation: none; }
+@keyframes pushPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }
+.push-label { color: #ff8fc4; margin-bottom: 18px; }
+.push-message {
+  max-width: 480px; min-height: 96px; margin: 0 auto 14px; padding: 22px 26px; display: flex; align-items: center; justify-content: center;
+  font-family: Georgia, serif; font-size: 1.1rem; line-height: 1.8; color: #f3e9f7; text-align: center;
+  background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 143, 196, 0.45); border-radius: 18px; visibility: hidden;
+}
+.push-message.show { visibility: visible; animation: msgIn 0.4s ease; }
+@keyframes msgIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.push-sign { font-family: Georgia, serif; font-style: italic; color: #d9c3e3; }
+#push-hearts { position: absolute; left: 50%; top: 50%; width: 0; height: 0; pointer-events: none; }
+.burst { position: absolute; font-size: 1.5rem; animation: burst 1.1s ease-out forwards; }
+@keyframes burst { to { transform: translate(var(--dx), var(--dy)) scale(1.3); opacity: 0; } }

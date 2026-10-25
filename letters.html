@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Push When You're Sad</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/letters.css" />
+  <script defer src="js/script.js"></script>
+  <script defer src="js/letters.js"></script>
+  <script src="js/lock.js"></script>
+</head>
+<body class="fade-in">
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="message.html">Message</a>
+    <a href="reasons.html">Reasons</a>
+    <a href="game.html">Game</a>
+    <a href="letters.html" class="active">Push Me</a>
+  </nav>
+
+  <audio id="bg-music" src="music/background-music.mp3" loop autoplay muted></audio>
+  <div id="music-hint">
+    <span class="music-hint-text">plz play this music b4 anyt</span>
+    <button id="music-toggle" aria-label="Toggle music">🔊</button>
+  </div>
+
+  <section class="content fade-in">
+    <h1>Push When You're Sad 💗</h1>
+    <p class="push-sub">Tap the heart. Tap it as many times as you need.</p>
+    <div class="push-stage">
+      <div id="push-hearts"></div>
+      <button id="push-btn" class="push-btn" aria-label="Push when you're sad">💗</button>
+    </div>
+    <p id="push-label" class="push-label">push me</p>
+    <div id="push-message" class="push-message" aria-live="polite"></div>
+    <p class="push-sign">from ur, Charlutipie ♥</p>
+  </section>
+
+  <footer class="site-footer">
+    <p>No copyrights · 2026</p>
+  </footer>
+</body>
+</html>
