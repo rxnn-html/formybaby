@@ -1,14 +1,19 @@
-/* Icon menu, phones only: below 600px wide each menu link shows as an icon. On bigger screens the words stay. */
+/* Icon menu, phones only: below 600px wide each menu link shows as an icon. On bigger screens the words stay.
+   Uses emoji (written as codes) so it works in every browser. A link that is not listed here keeps its words. */
 @media (max-width: 600px) {
-@supports (mask-image: url("x.svg")) or (-webkit-mask-image: url("x.svg")) {
-  nav a { display: flex; align-items: center; justify-content: center; padding: 10px 16px; font-size: 0; line-height: 0; }
-  nav a::before { content: ""; width: 26px; height: 26px; background-color: currentColor; transition: transform 0.2s;
-    -webkit-mask: var(--nav-icon) center / contain no-repeat; mask: var(--nav-icon) center / contain no-repeat; }
-  nav a:hover::before { transform: scale(1.15); }
-  nav a[href="home.html"] { --nav-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 11l9-8 9 8'/%3E%3Cpath d='M5 10v10h5v-6h4v6h5V10'/%3E%3C/svg%3E"); }
-  nav a[href="message.html"] { --nav-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='2'/%3E%3Cpath d='M3 7l9 6 9-6'/%3E%3C/svg%3E"); }
-  nav a[href="reasons.html"] { --nav-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20s-7-4.500-7-10a4 4 0 0 1 7-2.600A4 4 0 0 1 19 10c0 5.500-7 10-7 10z'/%3E%3C/svg%3E"); }
-  nav a[href="game.html"] { --nav-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='7' width='20' height='11' rx='5'/%3E%3Cpath d='M7 10v5M4.500 12.500h5'/%3E%3Ccircle cx='15.500' cy='11.500' r='1'/%3E%3Ccircle cx='18' cy='14' r='1'/%3E%3C/svg%3E"); }
-  nav a[href="letters.html"] { --nav-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M8 14s1.500 2 4 2 4-2 4-2'/%3E%3Cpath d='M9 9h.01M15 9h.01'/%3E%3C/svg%3E"); }
-}
+  nav a[href*="home"], nav a[href*="message"], nav a[href*="reasons"], nav a[href*="game"], nav a[href*="letters"] {
+    font-size: 0;
+    line-height: 1;
+    padding: 8px 16px;
+  }
+  nav a[href*="home"]::before, nav a[href*="message"]::before, nav a[href*="reasons"]::before,
+  nav a[href*="game"]::before, nav a[href*="letters"]::before {
+    font-size: 1.6rem;
+    line-height: 1.3;
+  }
+  nav a[href*="home"]::before { content: "\1F3E0"; }     /* house */
+  nav a[href*="message"]::before { content: "\1F48C"; }  /* love letter */
+  nav a[href*="reasons"]::before { content: "\1F497"; }  /* heart */
+  nav a[href*="game"]::before { content: "\1F3AE"; }     /* game controller */
+  nav a[href*="letters"]::before { content: "\1F60A"; }  /* smile */
 }
