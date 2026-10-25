@@ -1,4 +1,5 @@
-/* Icon menu: shows each menu link as an icon (the words stay in the page for screen readers) */
+/* Icon menu, phones only: below 600px wide each menu link shows as an icon. On bigger screens the words stay. */
+@media (max-width: 600px) {
 @supports (mask-image: url("x.svg")) or (-webkit-mask-image: url("x.svg")) {
   nav a { display: flex; align-items: center; justify-content: center; padding: 10px 16px; font-size: 0; line-height: 0; }
   nav a::before { content: ""; width: 26px; height: 26px; background-color: currentColor; transition: transform 0.2s;
@@ -9,4 +10,5 @@
   nav a[href="reasons.html"] { --nav-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20s-7-4.500-7-10a4 4 0 0 1 7-2.600A4 4 0 0 1 19 10c0 5.500-7 10-7 10z'/%3E%3C/svg%3E"); }
   nav a[href="game.html"] { --nav-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='7' width='20' height='11' rx='5'/%3E%3Cpath d='M7 10v5M4.500 12.500h5'/%3E%3Ccircle cx='15.500' cy='11.500' r='1'/%3E%3Ccircle cx='18' cy='14' r='1'/%3E%3C/svg%3E"); }
   nav a[href="letters.html"] { --nav-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M8 14s1.500 2 4 2 4-2 4-2'/%3E%3Cpath d='M9 9h.01M15 9h.01'/%3E%3C/svg%3E"); }
+}
 }
