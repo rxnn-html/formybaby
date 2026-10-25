@@ -6,7 +6,7 @@
   const SALT = "formybaby-lock-v1", ITER = 150000, KEY = "siteUnlocked";
 
   if (!HASH) return; // no code set yet, so the site stays open
-  try { if (localStorage.getItem(KEY) === HASH) return; } catch (e) {}
+  try { localStorage.removeItem(KEY); const n = performance.getEntriesByType("navigation")[0]; if (n && n.type === "reload") sessionStorage.removeItem(KEY); if (sessionStorage.getItem(KEY) === HASH) return; } catch (e) {}
 
   async function hashCode(code) {
     const enc = new TextEncoder();
@@ -55,7 +55,7 @@
       msg.textContent = "";
       if (!window.crypto || !crypto.subtle) { msg.textContent = "Please open the site from its normal web link."; return; }
       if ((await hashCode(input.value)) === HASH) {
-        try { localStorage.setItem(KEY, HASH); } catch (e) {}
+        try { sessionStorage.setItem(KEY, HASH); } catch (e) {}
         root.classList.remove("locked");
         box.remove();
       } else {
