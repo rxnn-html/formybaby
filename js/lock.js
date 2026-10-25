@@ -40,7 +40,7 @@
   function build() {
     const box = document.createElement("div");
     box.id = "lock-screen";
-    box.innerHTML = '<form autocomplete="off"><h1>For my baby 💗</h1><p>Enter our secret code to come in.</p>' +
+    box.innerHTML = '<form autocomplete="off"><h1>hi baby 😉</h1><p>Enter our secret code to come in.</p>' +
       '<p id="lock-hint" hidden></p><input id="lock-code" type="text" aria-label="Secret code" placeholder="secret code" ' +
       'autocomplete="off" autocapitalize="off" spellcheck="false" /><button type="submit">Open ♥</button>' +
       '<div id="lock-msg" role="status"></div></form>';
@@ -59,7 +59,7 @@
         root.classList.remove("locked");
         box.remove();
       } else {
-        msg.textContent = "That's not it, baby. Try again ♥";
+        msg.textContent = "That's not it, baby. Try again <3";
         input.select();
       }
     });
