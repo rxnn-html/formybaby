@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Album</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/album.css" />
+  <script defer src="js/script.js"></script>
+  <script defer src="js/album-data.js"></script>
+  <script defer src="js/album.js"></script>
+  <link rel="stylesheet" href="css/icons.css" />
+  <script src="js/loader.js"></script>
+  <script src="js/lock.js"></script>
+</head>
+<body class="fade-in">
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="message.html">Message</a>
+    <a href="reasons.html">Reasons</a>
+    <a href="game.html">Game</a>
+    <a href="letters.html">Push Me</a>
+    <a href="album.html" class="active">Album</a>
+  </nav>
+
+  <audio id="bg-music" src="music/background-music.mp3" loop autoplay muted></audio>
+  <div id="music-hint">
+    <span class="music-hint-text">plz play this music b4 anyt</span>
+    <button id="music-toggle" aria-label="Toggle music">🔊</button>
+  </div>
+
+  <section class="content fade-in">
+    <h1>Our Album 📸</h1>
+    <p class="album-sub">Every little thing you sent me, all in one place.</p>
+    <p id="album-count" class="album-count"></p>
+    <div class="album-tools">
+      <button class="chip on" data-view="all">All 💗</button>
+      <button class="chip" data-view="video">Videos 🎬</button>
+      <button class="chip" data-view="fav">Favorites ♥</button>
+      <button class="chip" id="album-surprise">Surprise me 🎲</button>
+    </div>
+    <div id="album-grid" class="album-grid"></div>
+    <p id="album-empty" class="album-empty" hidden></p>
+  </section>
+
+  <div id="lb" hidden>
+    <button id="lb-close" class="lb-btn" aria-label="Close">✕</button>
+    <button id="lb-prev" class="lb-btn" aria-label="Previous">‹</button>
+    <div id="lb-stage"></div>
+    <button id="lb-next" class="lb-btn" aria-label="Next">›</button>
+    <div id="lb-bar"><span id="lb-info"></span><button id="lb-fav" aria-label="Favorite">♡</button></div>
+  </div>
+
+  <footer class="site-footer">
+    <p>No copyrights · 2026</p>
+  </footer>
+</body>
+</html>

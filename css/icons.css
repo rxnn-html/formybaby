@@ -1,13 +1,13 @@
 /* Icon menu, phones only: below 600px wide each menu link shows as an icon. On bigger screens the words stay.
    Uses emoji (written as codes) so it works in every browser. A link that is not listed here keeps its words. */
 @media (max-width: 600px) {
-  nav a[href*="home"], nav a[href*="message"], nav a[href*="reasons"], nav a[href*="game"], nav a[href*="letters"] {
+  nav a[href*="home"], nav a[href*="message"], nav a[href*="reasons"], nav a[href*="game"], nav a[href*="letters"], nav a[href*="album"] {
     font-size: 0;
     line-height: 1;
-    padding: 8px 16px;
+    padding: 8px 12px;
   }
   nav a[href*="home"]::before, nav a[href*="message"]::before, nav a[href*="reasons"]::before,
-  nav a[href*="game"]::before, nav a[href*="letters"]::before {
+  nav a[href*="game"]::before, nav a[href*="letters"]::before, nav a[href*="album"]::before {
     font-size: 1.6rem;
     line-height: 1.3;
   }
@@ -16,4 +16,5 @@
   nav a[href*="reasons"]::before { content: "\1F497"; }  /* heart */
   nav a[href*="game"]::before { content: "\1F3AE"; }     /* game controller */
   nav a[href*="letters"]::before { content: "\1F60A"; }  /* smile */
+  nav a[href*="album"]::before { content: "\1F4F8"; }    /* camera */
 }

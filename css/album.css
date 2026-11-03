@@ -1,0 +1,34 @@
+/* Our Album */
+.album-sub { font-family: Georgia, serif; font-style: italic; color: #d9c3e3; margin-bottom: 6px; }
+.album-count { color: #ff8fc4; font-size: 0.95rem; margin-bottom: 16px; }
+.album-tools { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 26px; }
+.chip { padding: 8px 16px; font: inherit; font-size: 0.9rem; color: #f8e7ff; cursor: pointer; background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,143,196,0.5); border-radius: 999px; }
+.chip.on, .chip:hover { background: #e0559a; border-color: #e0559a; color: #fff; }
+.album-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 24px 16px; max-width: 1000px; margin: 0 auto; padding: 8px; }
+.polaroid { position: relative; margin: 0; padding: 10px 10px 8px; background: #fff7fb; border-radius: 6px; box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+  opacity: 0; transform: rotate(var(--tilt)) translateY(24px) scale(0.96); transition: transform 0.5s ease, opacity 0.5s ease; }
+.polaroid.in { opacity: 1; transform: rotate(var(--tilt)); }
+.polaroid.in:hover { transform: rotate(0) scale(1.04); z-index: 2; }
+.polaroid::before { content: ""; position: absolute; top: -9px; left: 50%; width: 54px; height: 18px; border-radius: 2px;
+  background: rgba(255,143,196,0.65); transform: translateX(-50%) rotate(-3deg); }
+.frame { position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0; border: none; overflow: hidden; cursor: pointer; background: #2b1631; }
+.frame img, .frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.badge { position: absolute; top: 6px; right: 6px; padding: 2px 6px; font-size: 0.9rem; background: rgba(26,18,32,0.7); border-radius: 8px; }
+.polaroid figcaption { min-height: 1.2em; margin-top: 8px; font-family: Georgia, serif; font-style: italic; font-size: 0.85rem; text-align: center; color: #6b2f52; }
+.sticker { position: absolute; right: -8px; bottom: 24px; font-size: 1.6rem; transform: rotate(14deg); pointer-events: none; }
+.polaroid.fav .frame::after { content: "♥"; position: absolute; left: 6px; bottom: 2px; font-size: 1.4rem; color: #ff4f93; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
+.album-empty { margin: 30px auto; font-family: Georgia, serif; font-style: italic; color: #d9c3e3; }
+#lb { position: fixed; inset: 0; z-index: 5000; display: flex; align-items: center; justify-content: center; background: rgba(10,6,14,0.94); }
+#lb[hidden] { display: none; }
+#lb-stage { display: flex; max-width: 92vw; max-height: 72vh; }
+#lb-stage img, #lb-stage video { max-width: 92vw; max-height: 72vh; border: 4px solid #fff7fb; border-radius: 10px; }
+.lb-btn { position: absolute; width: 46px; height: 46px; font-size: 1.6rem; line-height: 1; color: #fff; cursor: pointer; background: rgba(224,85,154,0.85); border: none; border-radius: 50%; }
+#lb-close { top: 14px; right: 14px; }
+#lb-prev { left: 8px; top: 50%; transform: translateY(-50%); }
+#lb-next { right: 8px; top: 50%; transform: translateY(-50%); }
+#lb-bar { position: absolute; bottom: 18px; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 14px; color: #f8e7ff; font-family: Georgia, serif; }
+#lb-fav { font-size: 1.8rem; line-height: 1; color: #ff8fc4; cursor: pointer; background: none; border: none; }
+#lb-fav.on { color: #ff4f93; animation: favPop 0.35s ease; }
+@keyframes favPop { 50% { transform: scale(1.5); } }
+@media (max-width: 600px) { .album-grid { grid-template-columns: repeat(2, 1fr); gap: 22px 14px; } }
