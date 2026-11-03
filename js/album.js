@@ -59,7 +59,7 @@
     empty.textContent = !items.length ? "The album is empty for now." : view === "fav" ? "No favorites yet. Open a photo and tap the heart." : "Nothing here yet.";
   }
 
-  const lb = $("lb"), stage = $("lb-stage");
+  const lb = $("lb"), stage = $("lb-stage"); document.documentElement.appendChild(lb); // keeps the viewer pinned to the screen
   function showLb() {
     const it = list[cur];
     stage.textContent = "";
