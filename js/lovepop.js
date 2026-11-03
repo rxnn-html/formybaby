@@ -27,14 +27,14 @@
 
   const css = document.createElement("style");
   css.textContent = `
-    #love-pop { position: fixed; left: 50%; bottom: 90px; z-index: 4000; max-width: min(88vw, 360px); padding: 12px 22px;
+    #love-pop { position: fixed; left: 0; top: 0; z-index: 4000; max-width: min(88vw, 360px); padding: 12px 22px;
       border: 2px solid #fff; border-radius: 999px; background: linear-gradient(135deg, #ff8fc4, #e0559a); color: #fff;
       font: 600 1rem/1.4 "Segoe UI", Arial, sans-serif; text-align: center; pointer-events: none; opacity: 0;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 18px rgba(255,143,196,0.5); transform: translate(-50%, 24px) scale(0.8); }
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 18px rgba(255,143,196,0.5); transform: scale(0.8); }
     #love-pop.show { animation: loveIn 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) forwards; }
     #love-pop.hide { animation: loveOut 0.5s ease forwards; }
-    @keyframes loveIn { to { opacity: 1; transform: translate(-50%, 0) scale(1); } }
-    @keyframes loveOut { from { opacity: 1; transform: translate(-50%, 0) scale(1); } to { opacity: 0; transform: translate(-50%, -14px) scale(0.9); } }
+    @keyframes loveIn { from { opacity: 0; transform: translateY(24px) scale(0.8) rotate(var(--tilt, 0deg)); } to { opacity: 1; transform: translateY(0) scale(1) rotate(var(--tilt, 0deg)); } }
+    @keyframes loveOut { from { opacity: 1; transform: translateY(0) scale(1) rotate(var(--tilt, 0deg)); } to { opacity: 0; transform: translateY(-14px) scale(0.9) rotate(var(--tilt, 0deg)); } }
     @media (prefers-reduced-motion: reduce) { #love-pop.show, #love-pop.hide { animation-duration: 0.01s; } }`;
   document.head.appendChild(css);
 
@@ -62,6 +62,21 @@
     }
     box.className = "";
     box.textContent = nextMessage();
+    box.style.left = "0px"; box.style.top = "0px"; // measure its natural size first
+    const w = box.offsetWidth, h = box.offsetHeight, vw = window.innerWidth, vh = window.innerHeight, m = 12;
+    const navEl = document.querySelector("nav"), hintEl = document.getElementById("music-hint");
+    const minY = (navEl ? Math.max(0, navEl.getBoundingClientRect().bottom) : 0) + m;
+    const maxX = Math.max(m, vw - w - m), maxY = Math.max(minY, vh - h - m);
+    const hint = hintEl ? hintEl.getBoundingClientRect() : null;
+    let x = m, y = minY;
+    for (let i = 0; i < 12; i++) { // try a few random spots, skipping the music button
+      x = m + Math.random() * (maxX - m);
+      y = minY + Math.random() * (maxY - minY);
+      if (!hint || x + w < hint.left - 8 || x > hint.right + 8 || y + h < hint.top - 8 || y > hint.bottom + 8) break;
+    }
+    box.style.left = Math.round(x) + "px";
+    box.style.top = Math.round(y) + "px";
+    box.style.setProperty("--tilt", (Math.random() * 12 - 6).toFixed(1) + "deg");
     void box.offsetWidth; // restart the animation
     box.className = "show";
     setTimeout(() => { box.className = "hide"; }, SHOW * 1000);
